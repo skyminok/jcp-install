@@ -1,0 +1,46 @@
+<configuration>
+
+    <!--
+        <property name="ENCODER_PATTERN"
+                  value="[%date{HH:mm:ss.SSS}] %-5level %-45.45logger{44} [%8.8thread@%contextName] %X{requestId} %X{sessionId} - %msg"/>
+        <property name="COLORED_ENCODER_PATTERN"
+                  value="%gray([%date{HH:mm:ss.SSS}]) %highlight(%-5level) %cyan(%-45.45logger{44}) [%8.8thread@%contextName] %magenta(%X{requestId}) - %msg"/>
+    -->
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                <![CDATA[%gray([%d{HH:mm:ss.SSS}]) [%thread] %highlight(%-5level) %cyan(%logger{36}) -%kvp- %msg%n]]>
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <logger name="app" level="debug"/>
+</configuration>
+        <!--
+<configuration debug="false">
+    <contextName>${HOSTNAME}</contextName>
+
+    <property name="ENCODER_PATTERN"
+              value="[%date{HH:mm:ss.SSS}] %-5level %-45.45logger{44} [%8.8thread@%contextName] %X{requestId} %X{sessionId} - %msg"/>
+    <property name="COLORED_ENCODER_PATTERN"
+              value="%gray([%date{HH:mm:ss.SSS}]) %highlight(%-5level) %cyan(%-45.45logger{44}) [%8.8thread@%contextName] %magenta(%X{requestId}) - %msg"/>
+
+    <appender name="CONSOLE_LOG" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${COLORED_ENCODER_PATTERN} %blue(\(%file:%line\)) %n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE_LOG"/>
+    </root>
+
+    <logger name="app" level="DEBUG"/>
+
+</configuration>-->

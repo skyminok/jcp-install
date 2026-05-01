@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Configuration PUBLIC 'waveset.dtd' 'waveset.dtd'>
+<!--  MemberObjectGroups="#ID#Top" extensionClass="Form" id="#ID#UserForm:ApprovalForm" lastMod="99" name="Approval Form"-->
+<Configuration id='#ID#UserForm:ApprovalForm' name='Approval Form'
+               lock='Configurator#1178294952815' creator='%STARTUP%Configurator'
+               createDate='1166621261333' lastMod='99' wstype='UserForm'>
+    <Extension>
+        <Form name='Approval Form' baseContext='variables'
+              noDefaultButtons='true'
+              objectLocationID='objectName=Approval+Form&amp;isBegin=true&amp;objectPath=0&amp;objectType=UserForm'>
+            <Comments>&#xA; Default form used to display provisioning approval
+                information.&#xA; The default form does not allow modifications.
+                It expects&#xA; a user view stored under the "user" variable.&#xA;
+                The form is required to set the "approved" variable to either&#xA;
+                "true" to indicate approval. The form is expected to set the&#xA;
+                "actualApprover" variable to the name of the user that edited&#xA;
+                the work item.&#xA;        </Comments>
+            <Display class='EditForm'>
+                <Property name='title'>
+                    <cond>
+                        <isTrue>
+                            <ref>:approvalButton</ref>
+                        </isTrue>
+                        <s>UI_WORKFLOW_XML_SIGN_REQUEST_TITLE</s>
+                        <s>UI_WORKFLOW_XML_EDIT_REQUEST_TITLE</s>
+                    </cond>
+                </Property>
+                <Property name='subTitle'>
+                    <cond>
+                        <isTrue>
+                            <ref>:approvalButton</ref>
+                        </isTrue>
+                        <s>UI_WORKFLOW_XML_SIGN_REQUEST_SUBTITLE</s>
+                        <s>UI_WORKFLOW_XML_EDIT_REQUEST_SUBTITLE</s>
+                    </cond>
+                </Property>
+            </Display>
+            <Include>
+                <ObjectRef type='UserForm'
+                           id='#ID#7A6482963A0AB3ED:831A91:10FA00B6620:-7FE0'
+                           name='Approval Library'/>
+            </Include>
+            <defun name='isEditable'>
+                <defarg name='attributeName'/>
+                <defvar name='ret'>
+                    <s>false</s>
+                </defvar>
+                <dolist name='apprAttr'>
+                    <ref>approvalAttributes</ref>
+                    <cond>
+                        <eq>
+                            <get>
+                                <ref>apprAttr</ref>
+                                <s>attributeName</s>
+                            </get>
+                            <ref>attributeName</ref>
+                        </eq>
+                        <break>
+                            <set name='ret'>
+                                <get>
+                                    <ref>apprAttr</ref>
+                                    <s>editable</s>
+                                </get>
+                            </set>
+                        </break>
+                        <s>false</s>
+                    </cond>
+                </dolist>
+                <ref>ret</ref>
+            </defun>
+            <Field>
+                <Disable>
+                    <isTrue>
+                        <ref>:approvalButton</ref>
+                    </isTrue>
+                </Disable>
+                <FieldRef name='Delegator'/>
+                <FieldRef name='Requester'/>
+                <FieldRef name='Login Application'/>
+                <Field>
+                    <Disable>
+                        <notnull>
+                            <ref>approvalAttributes</ref>
+                        </notnull>
+                    </Disable>
+                    <FieldRef name='Standard Approval Attributes'/>
+                </Field>
+                <Field>
+                    <Disable>
+                        <isnull>
+                            <ref>approvalAttributes</ref>
+                        </isnull>
+                    </Disable>
+                    <FieldRef name='Approval Attributes'/>
+                </Field>
+                <FieldRef name='Log Comments'>
+                    <Comments>&#xA; A library field that allows arbitrary
+                        approver comments&#xA; to be included in the audit log.&#xA;             </Comments>
+                </FieldRef>
+                <FieldRef name='Dereferenced Attribute'>
+                    <Property name='attrName'>
+                        <ref>sunrise.attribute</ref>
+                    </Property>
+                    <Property name='editable' value='true'/>
+                    <Property name='displayName'
+                              value='UI_WORKFLOW_XML_SUNRISE'/>
+                    <Property name='type' value='date'/>
+                </FieldRef>
+                <FieldRef name='Dereferenced Attribute'>
+                    <Property name='attrName'>
+                        <ref>sunset.attribute</ref>
+                    </Property>
+                    <Property name='editable' value='true'/>
+                    <Property name='displayName'
+                              value='UI_WORKFLOW_XML_SUNSET'/>
+                    <Property name='type' value='date'/>
+                </FieldRef>
+                <Field>
+                    <Disable>
+                        <not>
+                            <ref>useSignedApprovals</ref>
+                        </not>
+                    </Disable>
+                    <FieldRef name='Standard Approval Buttons'>
+                        <Property name='approvalButtonCommand' value='Refresh'/>
+                    </FieldRef>
+                </Field>
+                <Field>
+                    <Disable>
+                        <ref>useSignedApprovals</ref>
+                    </Disable>
+                    <FieldRef name='Standard Approval Buttons'/>
+                </Field>
+                <Field name='user.waveset.approvalAttributes'>
+                    <Derivation>
+                        <dolist name='el'>
+                            <ref>approvalAttributes</ref>
+                            <new class='com.waveset.object.GenericObject'>
+                                <map>
+                                    <s>attributeName</s>
+                                    <substr s='5'>
+                                        <get>
+                                            <ref>el</ref>
+                                            <s>attributeName</s>
+                                        </get>
+                                    </substr>
+                                </map>
+                            </new>
+                        </dolist>
+                    </Derivation>
+                </Field>
+            </Field>
+            <Field>
+                <Disable>
+                    <not>
+                        <isTrue>
+                            <ref>:approvalButton</ref>
+                        </isTrue>
+                    </not>
+                </Disable>
+                <FieldRef name='Approval Button Infrastructure'/>
+                <Field name='WF_TRANSACTION_SIGNATURE'>
+                    <Display class='TransactionSigner'>
+                        <Property name='transactionText'>
+                            <rule name='Approval Transaction Message'>
+                                <argument name='workItemList'>
+                                    <array>
+                                        <ref>:workItem</ref>
+                                    </array>
+                                </argument>
+                                <argument name='variablesList'>
+                                    <array>
+                                        <ref>:variables</ref>
+                                    </array>
+                                </argument>
+                                <argument name='approverName'
+                                          value='$(:owner)'/>
+                            </rule>
+                        </Property>
+                        <Property name='height' value='400'/>
+
+                        <Property name='supportedKeyStoreTypes'
+                                  value='JKS,PKCS12,HDImageStore'/>
+                        <Property name='keytypeSignatureMapping'
+                                  value='DSA=SHA1withDSA,RSA=SHA1withRSA,RSA=MD5withRSA,RSA=MD2withRSA,GOST3410=GOST3411withGOST3410EL'/>
+                    </Display>
+                </Field>
+                <Field>
+                    <Display class='Button'>
+                        <Property name='name' value='approvalButton'/>
+                        <Property name='label' value='UI_WORKFLOW_XML_SIGN'/>
+                        <Property name='value' value='true'/>
+                        <Property name='command' value='Save'/>
+                        <Property name='location' value='button'/>
+                        <Property name='submitPreCondition'
+                                  value='signTransaction(this.form, "variables.WF_TRANSACTION_SIGNATURE")'/>
+                    </Display>
+                </Field>
+                <Field>
+                    <Display class='Button'>
+                        <Property name='label' value='UI_WORKFLOW_XML_CANCEL'/>
+                        <Property name='command' value='Cancel'/>
+                        <Property name='location' value='button'/>
+                    </Display>
+                </Field>
+            </Field>
+        </Form>
+    </Extension>
+    <MemberObjectGroups>
+        <ObjectRef type='ObjectGroup' id='#ID#Top' name='Top'/>
+    </MemberObjectGroups>
+</Configuration>

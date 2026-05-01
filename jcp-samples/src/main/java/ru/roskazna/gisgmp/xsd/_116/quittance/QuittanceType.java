@@ -1,0 +1,422 @@
+
+package ru.roskazna.gisgmp.xsd._116.quittance;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
+import ru.roskazna.gisgmp.xsd._116.paymentinfo.ResponsePaymentIdentificationDataType;
+
+
+/**
+ * Квитанция
+ * 
+ * <p>Java class for QuittanceType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="QuittanceType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="SupplierBillID"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *               &lt;minLength value="1"/&gt;
+ *               &lt;maxLength value="25"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="CreationDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="BillStatus"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *               &lt;length value="1"/&gt;
+ *               &lt;enumeration value="1"/&gt;
+ *               &lt;enumeration value="2"/&gt;
+ *               &lt;enumeration value="3"/&gt;
+ *               &lt;enumeration value="4"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="payeeINN" type="{http://roskazna.ru/gisgmp/xsd/116/Common}INNType" minOccurs="0"/&gt;
+ *         &lt;element name="payeeKPP" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;union memberTypes=" {http://roskazna.ru/gisgmp/xsd/116/Common}KPPType"&gt;
+ *               &lt;simpleType&gt;
+ *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                   &lt;pattern value="0"/&gt;
+ *                 &lt;/restriction&gt;
+ *               &lt;/simpleType&gt;
+ *             &lt;/union&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="KBK" type="{http://roskazna.ru/gisgmp/xsd/116/Common}KBKResponseType" minOccurs="0"/&gt;
+ *         &lt;element name="OKTMO" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *               &lt;pattern value="\d{0,11}"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="Balance" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="PayerIdentifier" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}token"&gt;
+ *               &lt;minLength value="1"/&gt;
+ *               &lt;maxLength value="25"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="AccountNumber" type="{http://roskazna.ru/gisgmp/xsd/116/Common}AccountNumType" minOccurs="0"/&gt;
+ *         &lt;element name="BIK" type="{http://roskazna.ru/gisgmp/xsd/116/Common}BIKType" minOccurs="0"/&gt;
+ *         &lt;element name="PaymentIdentificationData" type="{http://roskazna.ru/gisgmp/xsd/116/PaymentInfo}ResponsePaymentIdentificationDataType"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "QuittanceType", propOrder = {
+    "supplierBillID",
+    "creationDate",
+    "billStatus",
+    "payeeINN",
+    "payeeKPP",
+    "kbk",
+    "oktmo",
+    "balance",
+    "payerIdentifier",
+    "accountNumber",
+    "bik",
+    "paymentIdentificationData"
+})
+@XmlSeeAlso({
+    ru.roskazna.gisgmp.xsd._116.doacknowledgment.DoAcknowledgmentResponseType.Quittances.Quittance.class,
+    ru.roskazna.gisgmp.xsd._116.exportquittanceresponse.ExportQuittanceResponseType.Quittances.Quittance.class
+})
+public class QuittanceType {
+
+    @XmlElement(name = "SupplierBillID", required = true)
+    protected String supplierBillID;
+    @XmlElement(name = "CreationDate", required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar creationDate;
+    @XmlElement(name = "BillStatus", required = true)
+    protected String billStatus;
+    protected String payeeINN;
+    protected String payeeKPP;
+    @XmlElement(name = "KBK")
+    protected String kbk;
+    @XmlElement(name = "OKTMO")
+    protected String oktmo;
+    @XmlElement(name = "Balance")
+    protected Long balance;
+    @XmlElement(name = "PayerIdentifier")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String payerIdentifier;
+    @XmlElement(name = "AccountNumber")
+    protected String accountNumber;
+    @XmlElement(name = "BIK")
+    protected String bik;
+    @XmlElement(name = "PaymentIdentificationData", required = true)
+    protected ResponsePaymentIdentificationDataType paymentIdentificationData;
+
+    /**
+     * Gets the value of the supplierBillID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSupplierBillID() {
+        return supplierBillID;
+    }
+
+    /**
+     * Sets the value of the supplierBillID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSupplierBillID(String value) {
+        this.supplierBillID = value;
+    }
+
+    /**
+     * Gets the value of the creationDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getCreationDate() {
+        return creationDate;
+    }
+
+    /**
+     * Sets the value of the creationDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setCreationDate(XMLGregorianCalendar value) {
+        this.creationDate = value;
+    }
+
+    /**
+     * Gets the value of the billStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBillStatus() {
+        return billStatus;
+    }
+
+    /**
+     * Sets the value of the billStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBillStatus(String value) {
+        this.billStatus = value;
+    }
+
+    /**
+     * Gets the value of the payeeINN property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPayeeINN() {
+        return payeeINN;
+    }
+
+    /**
+     * Sets the value of the payeeINN property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPayeeINN(String value) {
+        this.payeeINN = value;
+    }
+
+    /**
+     * Gets the value of the payeeKPP property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPayeeKPP() {
+        return payeeKPP;
+    }
+
+    /**
+     * Sets the value of the payeeKPP property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPayeeKPP(String value) {
+        this.payeeKPP = value;
+    }
+
+    /**
+     * Gets the value of the kbk property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKBK() {
+        return kbk;
+    }
+
+    /**
+     * Sets the value of the kbk property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKBK(String value) {
+        this.kbk = value;
+    }
+
+    /**
+     * Gets the value of the oktmo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOKTMO() {
+        return oktmo;
+    }
+
+    /**
+     * Sets the value of the oktmo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOKTMO(String value) {
+        this.oktmo = value;
+    }
+
+    /**
+     * Gets the value of the balance property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getBalance() {
+        return balance;
+    }
+
+    /**
+     * Sets the value of the balance property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setBalance(Long value) {
+        this.balance = value;
+    }
+
+    /**
+     * Gets the value of the payerIdentifier property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPayerIdentifier() {
+        return payerIdentifier;
+    }
+
+    /**
+     * Sets the value of the payerIdentifier property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPayerIdentifier(String value) {
+        this.payerIdentifier = value;
+    }
+
+    /**
+     * Gets the value of the accountNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    /**
+     * Sets the value of the accountNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountNumber(String value) {
+        this.accountNumber = value;
+    }
+
+    /**
+     * Gets the value of the bik property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBIK() {
+        return bik;
+    }
+
+    /**
+     * Sets the value of the bik property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBIK(String value) {
+        this.bik = value;
+    }
+
+    /**
+     * Gets the value of the paymentIdentificationData property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ResponsePaymentIdentificationDataType }
+     *     
+     */
+    public ResponsePaymentIdentificationDataType getPaymentIdentificationData() {
+        return paymentIdentificationData;
+    }
+
+    /**
+     * Sets the value of the paymentIdentificationData property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ResponsePaymentIdentificationDataType }
+     *     
+     */
+    public void setPaymentIdentificationData(ResponsePaymentIdentificationDataType value) {
+        this.paymentIdentificationData = value;
+    }
+
+}

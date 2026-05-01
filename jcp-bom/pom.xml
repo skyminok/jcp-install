@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ru.cryptopro</groupId>
+        <artifactId>jcp-parent</artifactId>
+        <version>2.0.49800-A</version>
+    </parent>
+
+    <artifactId>jcp-bom</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <jcpGroupId>ru.cryptopro.jcp</jcpGroupId>
+        <jcpVersion>${project.version}</jcpVersion>
+
+        <jcspGroupId>ru.cryptopro.jcsp</jcspGroupId>
+        <jcspVersion>5.0.49800-A</jcspVersion>
+
+        <pomDir>${project.build.directory}/pom</pomDir>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>ades-core</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>cades</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>cpssl</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>jcp</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>jcprequest</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>jcprevcheck</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>jcpxml</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>jcryptop</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcspGroupId}</groupId>
+                <artifactId>jcsp</artifactId>
+                <version>${jcspVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>rutoken</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${jcpGroupId}</groupId>
+                <artifactId>xades</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf_patched</artifactId>
+                <version>5.5.13.3</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-POMs</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>pom</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${pomDir}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.4</version>
+
+                <executions>
+                    <execution>
+                        <id>install-AdES-core</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/AdES-core.jar</file>
+                            <pomFile>${pomDir}/pom-AdES-core.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-ASN1P</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/ASN1P.jar</file>
+                            <pomFile>${pomDir}/pom-ASN1P.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-asn1rt</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/asn1rt.jar</file>
+                            <pomFile>${pomDir}/pom-asn1rt.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-CAdES</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/CAdES.jar</file>
+                            <pomFile>${pomDir}/pom-CAdES.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-cpSSL</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/cpSSL.jar</file>
+                            <pomFile>${pomDir}/pom-cpSSL.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCP</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCP.jar</file>
+                            <pomFile>${pomDir}/pom-JCP.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCPRequest</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCPRequest.jar</file>
+                            <pomFile>${pomDir}/pom-JCPRequest.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCPRevCheck</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCPRevCheck.jar</file>
+                            <pomFile>${pomDir}/pom-JCPRevCheck.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCPRevTools</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCPRevTools.jar</file>
+                            <pomFile>${pomDir}/pom-JCPRevTools.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCPxml</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCPxml.jar</file>
+                            <pomFile>${pomDir}/pom-JCPxml.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCryptoP</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCryptoP.jar</file>
+                            <pomFile>${pomDir}/pom-JCryptoP.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-JCSP</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/JCSP.jar</file>
+                            <pomFile>${pomDir}/pom-JCSP.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-Rutoken</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/Rutoken.jar</file>
+                            <pomFile>${pomDir}/pom-Rutoken.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-XAdES</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/XAdES.jar</file>
+                            <pomFile>${pomDir}/pom-XAdES.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-XMLDSigRI</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/XMLDSigRI.jar</file>
+                            <pomFile>${pomDir}/pom-XMLDSigRI.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-itextpdf_patched</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/itextpdf_patched-5.5.13.3.jar</file>
+                            <pomFile>${pomDir}/pom-itextpdf_patched.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>

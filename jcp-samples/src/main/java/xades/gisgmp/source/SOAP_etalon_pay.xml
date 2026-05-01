@@ -1,0 +1,103 @@
+<soapenv:Envelope
+xmlns:rev="http://smev.gosuslugi.ru/rev120315" 
+xmlns:smev="http://roskazna.ru/gisgmp/02000000/SmevGISGMPService/" 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<soapenv:Header/>
+   <soapenv:Body wsu:Id="body">
+      <smev:GISGMPTransferMsg>
+         <rev:Message>
+            <rev:Sender>
+               <rev:Code>AN0000001</rev:Code>
+               <rev:Name>ИС АН 1</rev:Name>
+            </rev:Sender>
+            <rev:Recipient>
+               <rev:Code>RKZN35001</rev:Code>
+               <rev:Name>Казначейство России</rev:Name>
+            </rev:Recipient>
+            <rev:ServiceName>GISGMP</rev:ServiceName>
+            <rev:TypeCode>GFNC</rev:TypeCode>
+            <rev:Status>REQUEST</rev:Status>
+            <rev:Date>2017-12-01T10:25:00.000</rev:Date>
+            <rev:ExchangeType>6</rev:ExchangeType>
+            <rev:TestMsg>test</rev:TestMsg>
+         </rev:Message>
+         <rev:MessageData>
+            <rev:AppData>
+               <gisgmp:RequestMessage 
+               xmlns="http://roskazna.ru/gisgmp/xsd/116/PaymentInfo" 
+               xmlns:com="http://roskazna.ru/gisgmp/xsd/116/Common" 
+               xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+               xmlns:gisgmp="http://roskazna.ru/gisgmp/xsd/116/Message" 
+               xmlns:msgd="http://roskazna.ru/gisgmp/xsd/116/MessageData" 
+               xmlns:n1="http://www.altova.com/samplexml/other-namespace" 
+               xmlns:pgu="http://roskazna.ru/gisgmp/xsd/116/PGU_ImportRequest"
+               xmlns:bgi="http://roskazna.ru/gisgmp/xsd/116/BudgetIndex"
+               xmlns:org="http://roskazna.ru/gisgmp/xsd/116/Organization"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               Id="P_a7654321-8bcf-de90-123f-abcde0987654" 
+               senderIdentifier="000147" 
+	       senderRole="7" 
+               timestamp="2017-12-01T10:25:00.000">
+                  <msgd:ImportRequest>
+                     <pgu:Package>
+                        <pgu:Document>
+                           <FinalPayment 
+                           Id="P_a1234567-bcf8-90de-f123-4567890abcde">
+                              <SupplierBillID>0</SupplierBillID>
+                              <Narrative>Оплата</Narrative>
+                              <Amount>10000</Amount>
+                              <PaymentDate>2017-12-01</PaymentDate>
+                              <ReceiptDate>2017-12-01</ReceiptDate>
+                              <BudgetIndex>
+                                 <bgi:Status>01</bgi:Status>
+                                 <bgi:Purpose>0</bgi:Purpose>
+                                 <bgi:TaxPeriod>0</bgi:TaxPeriod>
+                                 <bgi:TaxDocNumber>0</bgi:TaxDocNumber>
+                                 <bgi:TaxDocDate>0</bgi:TaxDocDate>
+                                 <bgi:PaymentType>0</bgi:PaymentType>
+                              </BudgetIndex>
+                              <PaymentIdentificationData>
+                                 <Bank>
+                                    <org:Name>ВТБ24</org:Name>
+                                    <org:BIK>044525716</org:BIK>
+                                <org:CorrespondentBankAccount>40602810000380000020</org:CorrespondentBankAccount>
+                                 </Bank>
+                              <SystemIdentifier>10445257164525710112201788887777</SystemIdentifier>
+                              </PaymentIdentificationData>
+                              <AccDoc xmlns="http://roskazna.ru/gisgmp/xsd/116/PaymentInfo">
+                                 <AccDocNo xmlns="http://roskazna.ru/gisgmp/xsd/116/PaymentInfo">0</AccDocNo>
+                                 <AccDocDate xmlns="http://roskazna.ru/gisgmp/xsd/116/PaymentInfo">2017-12-01</AccDocDate>
+                              </AccDoc>
+                              <Payer>
+                                 <com:PayerIdentifier>0100000000023456789012643</com:PayerIdentifier>
+                                 <PayerName>Иванов Иван Николаевич</PayerName>
+                              </Payer>
+                              <Payee>
+                                 <PayeeName>ГИБДД</PayeeName>
+                                 <payeeINN>3543655766</payeeINN>
+                                 <payeeKPP>354365576</payeeKPP>
+                                 <PayeeBankAcc>
+                                    <org:AccountNumber>40602810000380000020</org:AccountNumber>
+                                    <org:Bank>
+                                       <org:Name>Альфа</org:Name>
+                                       <org:BIK>044525716</org:BIK>
+                                       <org:CorrespondentBankAccount>30101810100000000716</org:CorrespondentBankAccount>
+                                    </org:Bank>
+                                 </PayeeBankAcc>
+                              </Payee>
+                              <ChangeStatus 
+                              meaning="1"/>
+                              <KBK>18851111111111111113</KBK>
+                              <OKTMO>12345673</OKTMO>
+                           </FinalPayment>
+                        </pgu:Document>
+                     </pgu:Package>
+                  </msgd:ImportRequest>
+               </gisgmp:RequestMessage>
+            </rev:AppData>
+         </rev:MessageData>
+      </smev:GISGMPTransferMsg>
+   </soapenv:Body>
+</soapenv:Envelope>

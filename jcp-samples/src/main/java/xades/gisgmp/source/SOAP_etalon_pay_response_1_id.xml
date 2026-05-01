@@ -1,0 +1,39 @@
+<soapenv:Envelope 
+xmlns:inc="http://www.w3.org/2004/08/xop/include" 
+xmlns:mes="http://roskazna.ru/gisgmp/xsd/116/Message" 
+xmlns:mes1="http://roskazna.ru/gisgmp/xsd/116/MessageData" 
+xmlns:rev="http://smev.gosuslugi.ru/rev120315" 
+xmlns:smev="http://roskazna.ru/gisgmp/02000000/SmevGISGMPService/" 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+xmlns:xd="http://www.w3.org/2000/09/xmldsig#">
+   <soapenv:Body wsu:Id="body">
+      <smev:GISGMPTransferMsg>
+         <rev:Message>
+            <rev:Sender>
+               <rev:Code>AN0000001</rev:Code>
+               <rev:Name>ИС АН 1</rev:Name>
+            </rev:Sender>
+            <rev:Recipient>
+               <rev:Code>RKZN35001</rev:Code>
+               <rev:Name>Казначейство России</rev:Name>
+            </rev:Recipient>
+            <rev:ServiceName>GISGMP</rev:ServiceName>
+            <rev:TypeCode>GFNC</rev:TypeCode>
+            <rev:Status>REQUEST</rev:Status>
+            <rev:Date>2017-12-01T10:25:00.0Z</rev:Date>
+            <rev:ExchangeType>6</rev:ExchangeType>
+         </rev:Message>
+         <rev:MessageData>
+            <rev:AppData xmlns:gisgmp="http://roskazna.ru/gisgmp/xsd/116/Message" xmlns:msgd="http://roskazna.ru/gisgmp/xsd/116/MessageData" xmlns:pdr="http://roskazna.ru/gisgmp/xsd/116/PGU_DataRequest" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+               <gisgmp:RequestMessage Id="P_a7654321-8bcf-de90-123f-abcde0987654" senderIdentifier="000147" senderRole="7" timestamp="2017-12-01T10:25:00.000">
+                  <msgd:PackageStatusRequest xmlns:psr="http://roskazna.ru/gisgmp/xsd/116/PackageStatusRequest">
+                     <psr:PackageID></psr:PackageID>
+                  </msgd:PackageStatusRequest>
+               </gisgmp:RequestMessage>
+            </rev:AppData>
+         </rev:MessageData>
+      </smev:GISGMPTransferMsg>
+   </soapenv:Body>
+</soapenv:Envelope>

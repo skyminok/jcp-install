@@ -1,0 +1,240 @@
+
+package ru.roskazna.gisgmp.xsd._116.ticket;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import ru.roskazna.gisgmp.xsd._116.errinfo.ResultInfo;
+
+
+/**
+ *  Техническая квитанция
+ * 
+ * <p>Java class for TicketType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="TicketType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;choice&gt;
+ *         &lt;element name="RequestProcessResult" type="{http://roskazna.ru/gisgmp/xsd/116/ErrInfo}ResultInfo"/&gt;
+ *         &lt;element name="PackageProcessResult"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="EntityProcessResult" maxOccurs="unbounded"&gt;
+ *                     &lt;complexType&gt;
+ *                       &lt;complexContent&gt;
+ *                         &lt;extension base="{http://roskazna.ru/gisgmp/xsd/116/ErrInfo}ResultInfo"&gt;
+ *                           &lt;attribute name="entityId" use="required" type="{http://www.w3.org/2001/XMLSchema}token" /&gt;
+ *                         &lt;/extension&gt;
+ *                       &lt;/complexContent&gt;
+ *                     &lt;/complexType&gt;
+ *                   &lt;/element&gt;
+ *                 &lt;/sequence&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/choice&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "TicketType", propOrder = {
+    "requestProcessResult",
+    "packageProcessResult"
+})
+public class TicketType {
+
+    @XmlElement(name = "RequestProcessResult")
+    protected ResultInfo requestProcessResult;
+    @XmlElement(name = "PackageProcessResult")
+    protected TicketType.PackageProcessResult packageProcessResult;
+
+    /**
+     * Gets the value of the requestProcessResult property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ResultInfo }
+     *     
+     */
+    public ResultInfo getRequestProcessResult() {
+        return requestProcessResult;
+    }
+
+    /**
+     * Sets the value of the requestProcessResult property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ResultInfo }
+     *     
+     */
+    public void setRequestProcessResult(ResultInfo value) {
+        this.requestProcessResult = value;
+    }
+
+    /**
+     * Gets the value of the packageProcessResult property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TicketType.PackageProcessResult }
+     *     
+     */
+    public TicketType.PackageProcessResult getPackageProcessResult() {
+        return packageProcessResult;
+    }
+
+    /**
+     * Sets the value of the packageProcessResult property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TicketType.PackageProcessResult }
+     *     
+     */
+    public void setPackageProcessResult(TicketType.PackageProcessResult value) {
+        this.packageProcessResult = value;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="EntityProcessResult" maxOccurs="unbounded"&gt;
+     *           &lt;complexType&gt;
+     *             &lt;complexContent&gt;
+     *               &lt;extension base="{http://roskazna.ru/gisgmp/xsd/116/ErrInfo}ResultInfo"&gt;
+     *                 &lt;attribute name="entityId" use="required" type="{http://www.w3.org/2001/XMLSchema}token" /&gt;
+     *               &lt;/extension&gt;
+     *             &lt;/complexContent&gt;
+     *           &lt;/complexType&gt;
+     *         &lt;/element&gt;
+     *       &lt;/sequence&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "entityProcessResult"
+    })
+    public static class PackageProcessResult {
+
+        @XmlElement(name = "EntityProcessResult", required = true)
+        protected List<TicketType.PackageProcessResult.EntityProcessResult> entityProcessResult;
+
+        /**
+         * Gets the value of the entityProcessResult property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the entityProcessResult property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getEntityProcessResult().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link TicketType.PackageProcessResult.EntityProcessResult }
+         * 
+         * 
+         */
+        public List<TicketType.PackageProcessResult.EntityProcessResult> getEntityProcessResult() {
+            if (entityProcessResult == null) {
+                entityProcessResult = new ArrayList<TicketType.PackageProcessResult.EntityProcessResult>();
+            }
+            return this.entityProcessResult;
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType&gt;
+         *   &lt;complexContent&gt;
+         *     &lt;extension base="{http://roskazna.ru/gisgmp/xsd/116/ErrInfo}ResultInfo"&gt;
+         *       &lt;attribute name="entityId" use="required" type="{http://www.w3.org/2001/XMLSchema}token" /&gt;
+         *     &lt;/extension&gt;
+         *   &lt;/complexContent&gt;
+         * &lt;/complexType&gt;
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class EntityProcessResult
+            extends ResultInfo
+        {
+
+            @XmlAttribute(name = "entityId", required = true)
+            @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+            @XmlSchemaType(name = "token")
+            protected String entityId;
+
+            /**
+             * Gets the value of the entityId property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getEntityId() {
+                return entityId;
+            }
+
+            /**
+             * Sets the value of the entityId property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setEntityId(String value) {
+                this.entityId = value;
+            }
+
+        }
+
+    }
+
+}

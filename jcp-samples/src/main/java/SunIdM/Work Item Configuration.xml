@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Configuration PUBLIC 'waveset.dtd' 'waveset.dtd'>
+<!--  MemberObjectGroups="#ID#Top" extensionClass="Form" id="#ID#Form:WorkItemConfirmation" lastMod="66" name="Work Item Confirmation"-->
+<Configuration id='#ID#Form:WorkItemConfirmation' name='Work Item Confirmation'
+               lock='Configurator#1178547294174' creator='%STARTUP%Configurator'
+               createDate='1166621255895' lastMod='66' wstype='UserForm'>
+    <Extension>
+        <Form name='Work Item Confirmation' noDefaultButtons='true'
+              objectLocationID='objectName=Work+Item+Confirmation&amp;isBegin=true&amp;objectPath=0&amp;objectType=UserForm'>
+            <Field name='forwardTo'>
+                <Comments>&#xA; Force this to null each time it is displayed so
+                    we always have&#xA; to select a new user, rather than
+                    assuming the last one is still&#xA;
+                    valid.&#xA;      </Comments>
+                <Display class='Select'>
+                    <Property name='nullLabel' value='UI_APPR_JAVA_FORWARD_TO'/>
+                    <Property name='allowedValues' value='$(forwardingUsers)'/>
+                    <Property name='sorted' value='true'/>
+                </Display>
+                <Derivation>
+                    <null/>
+                </Derivation>
+                <Disable>
+                    <neq>
+                        <ref>action</ref>
+                        <s>forward</s>
+                    </neq>
+                </Disable>
+            </Field>
+            <Field name='WorkItems'>
+                <Display class='ConfirmationTable'>
+                    <Property name='rows'>
+                        <ref>workItems[selected=true].request</ref>
+                    </Property>
+                </Display>
+                <Disable>
+                    <isTrue>
+                        <ref>useSignedApprovals</ref>
+                    </isTrue>
+                </Disable>
+            </Field>
+            <Field name='variables.WF_TRANSACTION_SIGNATURE'>
+                <Display class='TransactionSigner'>
+                    <Property name='transactionText'>
+                        <rule name='Approval Transaction Message'>
+                            <argument name='workItemList'
+                                      value='$(workItems[selected=true])'/>
+                            <argument name='variablesList'
+                                      value='$(workItems[selected=true].variables)'/>
+                            <argument name='approverName' value='$(:user)'/>
+                        </rule>
+                    </Property>
+                    <Property name='height' value='400'/>
+                    <Property name='supportedKeyStoreTypes'
+                              value='JKS,PKCS12,HDImageStore'/>
+                    <Property name='keytypeSignatureMapping'
+                              value='DSA=SHA1withDSA,RSA=SHA1withRSA,RSA=MD5withRSA,RSA=MD2withRSA,GOST3410=GOST3411withGOST3410EL'/>
+                </Display>
+
+
+                <Disable>
+                    <not>
+                        <isTrue>
+                            <ref>useSignedApprovals</ref>
+                        </isTrue>
+                    </not>
+                </Disable>
+            </Field>
+            <Field name='BottomButtons'>
+                <Display class='ButtonRow'/>
+                <Field name='confirm'>
+                    <Display class='Button'>
+                        <Property name='command' value='Recalculate'/>
+                        <Property name='label' value='UI_OK_LABEL'/>
+                        <Property name='value' value='true'/>
+                    </Display>
+                    <Disable>
+                        <isTrue>
+                            <ref>useSignedApprovals</ref>
+                        </isTrue>
+                    </Disable>
+                </Field>
+                <Field name='confirm'>
+                    <Display class='Button'>
+                        <Property name='command' value='Recalculate'/>
+                        <Property name='label' value='UI_WORKFLOW_XML_SIGN'/>
+                        <Property name='value' value='true'/>
+                        <Property name='submitPreCondition'
+                                  value='signTransaction(this.form, "variables.WF_TRANSACTION_SIGNATURE")'/>
+                    </Display>
+                    <Disable>
+                        <not>
+                            <isTrue>
+                                <ref>useSignedApprovals</ref>
+                            </isTrue>
+                        </not>
+                    </Disable>
+                </Field>
+                <Field name='confirm'>
+                    <Display class='Button'>
+                        <Property name='command' value='Recalculate'/>
+                        <Property name='label' value='UI_CANCEL_LABEL'/>
+                        <Property name='value' value='false'/>
+                    </Display>
+                </Field>
+            </Field>
+        </Form>
+    </Extension>
+    <MemberObjectGroups>
+        <ObjectRef type='ObjectGroup' id='#ID#Top' name='Top'/>
+    </MemberObjectGroups>
+</Configuration>

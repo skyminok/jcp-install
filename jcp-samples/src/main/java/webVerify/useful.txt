@@ -1,0 +1,15 @@
+1. Cобрать как war-архив
+2. Нужно установить параметры JVM com.sun.security.enableCRLDP=true и com.ibm.security.enableCRLDP=true: 
+для вебсферы - параметры прописываются через консоль администратора: Серверы приложений WebSphere -> имя сервера -> Управление Java и процессами -> Определение процесса -> Виртуальная машина Java -> Другие параметры
+для томката задать переменную-  set CATALINA_OPTS=-Dcom.sun.security.enableCRLDP=true -Dcom.ibm.security.enableCRLDP=true 
+3. В файле logging.properties задать логгер ru.CryptoPro.JCP.tools.JCPLogger, установить ему в handlers java.util.logging.FileHandler (из файла логирования лог будет считываться для записи в окно) 
+4. Зависимости: 
+servlet-api.jar
+AdES-core.jar
+CAdES.jar
+JCP.jar
+JCPxml.jar
+XAdES.jar
+bcpkix-jdk15on-1.60.jar
+bcprov-jdk15on-1.60.jar
+itextpdf_patched-5.5.5.jar

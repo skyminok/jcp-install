@@ -23,5 +23,11 @@
             <artifactId>asn1rt</artifactId>
             <version>${jcpVersion}</version>
         </dependency>
+
+        <dependency>
+            <groupId>${jcpGroupId}</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>${jcpVersion}</version>
+        </dependency>
     </dependencies>
 </project>

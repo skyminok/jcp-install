@@ -196,6 +196,18 @@
                     </execution>
 
                     <execution>
+                        <id>install-forms_rt</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/forms_rt.jar</file>
+                            <pomFile>${pomDir}/pom-forms_rt.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>install-JCP</id>
                         <phase>install</phase>
                         <goals>

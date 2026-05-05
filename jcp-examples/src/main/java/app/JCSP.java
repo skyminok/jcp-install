@@ -1,5 +1,4 @@
-import org.slf4j.bridge.SLF4JBridgeHandler;
-import ru.CryptoPro.JCP.Util.JCPInit;
+package app;
 
 import java.security.KeyStore;
 import java.security.Security;
@@ -11,9 +10,7 @@ import java.util.stream.Stream;
 public class JCSP {
 
     public static void main(String[] args) throws Exception {
-        SLF4JBridgeHandler.removeHandlersForRootLogger();
-        SLF4JBridgeHandler.install();
-        JCPInit.initProviders(true);
+        Helper.initJcsp();
 
         Stream.of(Security.getProviders())
                 .forEach(System.out::println);

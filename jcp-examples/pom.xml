@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ru.cryptopro</groupId>
+        <artifactId>jcp-parent</artifactId>
+        <version>2.0.49800-A</version>
+    </parent>
+
+    <artifactId>jcp-examples</artifactId>
+    <packaging>jar</packaging>
+
+    <description>Re-worked code samples</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ru.cryptopro</groupId>
+                <artifactId>jcp-bom</artifactId>
+                <version>2.0.49800-A</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>ru.cryptopro.jcp</groupId>
+            <artifactId>jcp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.cryptopro.jcsp</groupId>
+            <artifactId>jcsp</artifactId>
+        </dependency>
+
+<!--  utils -->
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.32</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+
+    </dependencies>
+</project>

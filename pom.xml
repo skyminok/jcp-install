@@ -16,5 +16,6 @@
     <modules>
         <module>jcp-bom</module>
         <module>jcp-samples</module>
+        <module>jcp-examples</module>
     </modules>
 </project>

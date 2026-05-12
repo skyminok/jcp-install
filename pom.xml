@@ -11,11 +11,56 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <jcpGroupId>ru.cryptopro.jcp</jcpGroupId>
+        <jcpVersion>${project.version}</jcpVersion>
+
+        <jcspGroupId>ru.cryptopro.jcsp</jcspGroupId>
+        <jcspVersion>5.0.49800-A</jcspVersion>
+
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
     <modules>
         <module>jcp-bom</module>
-        <module>jcp-samples</module>
-        <module>jcp-examples</module>
+        <module>jcp-lib</module>
+        <module>jcsp-lib</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>samples</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>jcp-samples</module>
+                <module>jcp-examples</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.5.32</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>2.0.16</version>
+            </dependency>
+
+            <!-- test dependencies -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>6.0.3</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

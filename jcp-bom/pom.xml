@@ -14,12 +14,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <jcpGroupId>ru.cryptopro.jcp</jcpGroupId>
-        <jcpVersion>${project.version}</jcpVersion>
-
-        <jcspGroupId>ru.cryptopro.jcsp</jcspGroupId>
-        <jcspVersion>5.0.49800-A</jcspVersion>
-
         <pomDir>${project.build.directory}/pom</pomDir>
     </properties>
 
@@ -80,6 +74,12 @@
             </dependency>
 
             <dependency>
+                <groupId>${jcspGroupId}</groupId>
+                <artifactId>sspissl</artifactId>
+                <version>${jcspVersion}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>${jcpGroupId}</groupId>
                 <artifactId>rutoken</artifactId>
                 <version>${jcpVersion}</version>
@@ -97,6 +97,16 @@
                 <version>5.5.13.3</version>
             </dependency>
 
+            <dependency>
+                <groupId>ru.cryptopro</groupId>
+                <artifactId>jcp-lib</artifactId>
+                <version>${jcpVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.cryptopro</groupId>
+                <artifactId>jcsp-lib</artifactId>
+                <version>${jcspVersion}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
@@ -288,6 +298,18 @@
                         <configuration>
                             <file>libs/JCSP.jar</file>
                             <pomFile>${pomDir}/pom-JCSP.xml</pomFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>install-sspiSSL</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>libs/sspiSSL.jar</file>
+                            <pomFile>${pomDir}/pom-sspiSSL.xml</pomFile>
                         </configuration>
                     </execution>
 

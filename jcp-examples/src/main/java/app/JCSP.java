@@ -1,5 +1,7 @@
 package app;
 
+import ru.cryptopro.JCSPHelper;
+
 import java.security.KeyStore;
 import java.security.Security;
 import java.security.cert.Certificate;
@@ -10,7 +12,7 @@ import java.util.stream.Stream;
 public class JCSP {
 
     public static void main(String[] args) throws Exception {
-        Helper.initJcsp();
+        JCSPHelper.initJCSP();
 
         Stream.of(Security.getProviders())
                 .forEach(System.out::println);
@@ -24,10 +26,9 @@ public class JCSP {
             if (cert == null) {
                 continue;
             }
-            if (!(cert instanceof X509Certificate)) {
+            if (!(cert instanceof X509Certificate curCert)) {
                 continue;
             }
-            X509Certificate curCert = (X509Certificate) cert;
             System.out.println(curCert.getSubjectX500Principal());
         }
 

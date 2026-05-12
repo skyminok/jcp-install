@@ -1,5 +1,7 @@
 package app;
 
+import ru.cryptopro.JCPHelper;
+
 import java.security.KeyStore;
 import java.security.Security;
 import java.security.cert.Certificate;
@@ -10,7 +12,7 @@ import java.util.stream.Stream;
 public class JCP {
 
     public static void main(String[] args) throws Exception {
-        Helper.initJcp();
+        JCPHelper.initJCP();
 
         Stream.of(Security.getProviders())
                 .forEach(System.out::println);
@@ -27,10 +29,9 @@ public class JCP {
             if (cert == null) {
                 continue;
             }
-            if (!(cert instanceof X509Certificate)) {
+            if (!(cert instanceof X509Certificate curCert)) {
                 continue;
             }
-            X509Certificate curCert = (X509Certificate) cert;
             System.out.println(alias + "=" + curCert.getSubjectX500Principal());
         }
 

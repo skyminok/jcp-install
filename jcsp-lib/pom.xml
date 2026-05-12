@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ru.cryptopro</groupId>
+        <artifactId>jcp-parent</artifactId>
+        <version>2.0.49800-A</version>
+    </parent>
+
+    <artifactId>jcsp-lib</artifactId>
+    <version>5.0.49800-A</version>
+    <packaging>jar</packaging>
+
+    <description>Java library with all dependencies of JCSP</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.compiler.source>21</java.compiler.source>
+        <java.compiler.target>21</java.compiler.target>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ru.cryptopro</groupId>
+                <artifactId>jcp-bom</artifactId>
+                <version>2.0.49800-A</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.cryptopro.jcsp</groupId>
+            <artifactId>jcsp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.cryptopro.jcsp</groupId>
+            <artifactId>sspissl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.cryptopro</groupId>
+            <artifactId>jcp-lib</artifactId>
+        </dependency>
+
+        <!--  utils -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
